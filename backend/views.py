@@ -22,7 +22,7 @@ class Form(Resource):
         db = get_db()
         data = request.json
         cur = db.cursor()
-        cur.execute("INSERT INTO form (content) VALUES (?)", (data['content'],))
+        cur.execute("INSERT INTO form (content) VALUES (?)", (json.dumps(data['content']),))
         db.commit()
         cur.close()
         return {'payload': {'id': cur.lastrowid}}
