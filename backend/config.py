@@ -1,7 +1,7 @@
 class Base():
     """The base configuration."""
     DEBUG = False
-    DATABASE = 'local.db'
+    DATABASE = 'database.db'
 
 
 CONFIG = {
