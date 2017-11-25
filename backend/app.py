@@ -1,5 +1,6 @@
 import logging
 from flask import Flask, g
+from flask_cors import CORS
 from flask_restful import Api
 
 
@@ -17,6 +18,7 @@ def create_app(config):
         if db is not None:
             db.close()
 
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
     return app
 
 
