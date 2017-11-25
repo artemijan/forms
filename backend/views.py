@@ -23,5 +23,6 @@ class Form(Resource):
         data = request.json
         cur = db.cursor()
         cur.execute("INSERT INTO form (content) VALUES (?)", (data['content'],))
+        cur.close()
         return {'payload': {'id': cur.lastrowid}}
 
