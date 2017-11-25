@@ -1,3 +1,5 @@
+import json
+
 from flask import request
 from flask_restful import Resource, abort
 
@@ -14,7 +16,7 @@ class Form(Resource):
         rows = cur.fetchall()
         if len(rows) == 0:
             return abort(404)
-        return {'payload': rows[0][0]}
+        return {'payload': json.loads(rows[0][0])}
 
     def post(self):
         db = get_db()

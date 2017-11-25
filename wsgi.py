@@ -6,5 +6,5 @@ from backend.config import CONFIG
 app = create_app(config=CONFIG['dev'])
 
 if __name__ == "__main__":
-    host, port = ('localhost', 3535)
+    host, port = ('localhost', 8000)
     app.run(host=host, port=port)
