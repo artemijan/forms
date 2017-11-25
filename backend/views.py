@@ -27,3 +27,17 @@ class Form(Resource):
         cur.close()
         return {'payload': {'id': cur.lastrowid}}
 
+    def put(self, id=None):
+        if id is None:
+            abort(400)
+        db = get_db()
+        data = request.json
+        cur = db.cursor()
+        cur.execute("SELECT content FROM form WHERE id=?", (str(id),))
+        rows = cur.fetchall()
+        if len(rows) == 0:
+            return abort(404)
+        cur.execute("UPDATE form SET content = ? WHERE ID = ?;", (json.dumps(data['content']), id))
+        db.commit()
+        cur.close()
+        return {'payload': data['content']}
