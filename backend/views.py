@@ -10,7 +10,7 @@ class Form(Resource):
             abort(400)
         db = get_db()
         cur = db.cursor()
-        cur.execute("SELECT content FROM form WHERE id=?", str(id))
+        cur.execute("SELECT content FROM form WHERE id=?", (str(id),))
         rows = cur.fetchall()
         if len(rows) == 0:
             return abort(404)
