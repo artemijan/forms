@@ -7,4 +7,4 @@ app = create_app(config=CONFIG['dev'])
 
 if __name__ == "__main__":
     host, port = ('localhost', 8000)
-    app.run(host=host, port=port)
+    app.run(host=host, port=port, threaded=True)
