@@ -37,7 +37,7 @@ class Form(Resource):
         rows = cur.fetchall()
         if len(rows) == 0:
             return abort(404)
-        cur.execute("UPDATE form SET content = ? WHERE ID = ?;", (json.dumps(data['content']), id))
+        cur.execute("UPDATE form SET content = ? WHERE ID = ?;", (json.dumps(data), id))
         db.commit()
         cur.close()
-        return {'payload': data['content']}
+        return {'payload': data}
